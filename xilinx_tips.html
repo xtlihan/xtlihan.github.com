@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>xilinx_tips</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1" class="justcenter">xilinx tips</h1>
+
+<h2 id="toc_1.1">use xilinx under linux</h2>
+<p>
+source settings64.csh
+ise            - Project Navigator
+xps            - EDK Platform Studio
+planAhead      - PlanAhead
+fpga_editor    - FPGA editor
+coregen        - Core Generator
+timingan       - Timing Analyzer
+smartxplorer   - SmartXplorer
+sysgen         - System Generator
+analyzer       - Chipscope Analyzer
+</p>
+
+<h2 id="toc_1.2">planahead segmentation fault</h2>
+<p>
+/opt/xilinx/14.5/ISE_DS/PlanAhead/bin/rdiArgs.sh: line 95: 21662 Segmentation fault      "\(RDI_PROG" "\)@"
+mv /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so.bak
+ln -s /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/libjvm.so /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so
+</p>
+
+<h2 id="toc_1.3">xps application failed</h2>
+<p>
+error [common 17-49] interanal data exception: xps application failed!
+cd /usr/bin/
+sudo ln -s make gmake
+</p>
+
+<h2 id="toc_1.4">no arm tools</h2>
+<p>
+install CodeSourcery to /opt/xilinx/ise/EDK/gnu/arm/lin
+</p>
+
+</body>
+</html>

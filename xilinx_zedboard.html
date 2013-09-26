@@ -9,87 +9,198 @@
 
 <h1 id="toc_1" class="justcenter">xilinx zedboard</h1>
 
-<h2 id="toc_1.1">use xilinx under linux</h2>
-<p>
-source settings64.csh
-ise            - Project Navigator
-xps            - EDK Platform Studio
-planAhead      - PlanAhead
-fpga_editor    - FPGA editor
-coregen        - Core Generator
-timingan       - Timing Analyzer
-smartxplorer   - SmartXplorer
-sysgen         - System Generator
-analyzer       - Chipscope Analyzer
-</p>
-
-
-
-<h2 id="toc_1.2">planahead segmentation fault</h2>
-<p>
-/opt/xilinx/14.5/ISE_DS/PlanAhead/bin/rdiArgs.sh: line 95: 21662 Segmentation fault      "\(RDI_PROG" "\)@"
-mv /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so.bak
-ln -s /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/libjvm.so /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so
-</p>
-
-<h2 id="toc_1.3">xps application failed</h2>
-<p>
-error [common 17-49] interanal data exception: xps application failed!
-cd /usr/bin/
-sudo ln -s make gmake
-</p>
-
-
-<h2 id="toc_1.4">no arm tools</h2>
-<p>
-install CodeSourcery to /opt/xilinx/ise/EDK/gnu/arm/lin
-</p>
-
-<h2 id="toc_1.5">cable driver</h2>
-<p>
-sudo apt-get install libc6-dev-i386
-</p>
-
-<h2 id="toc_1.6">step by step</h2>
+<h2 id="toc_1.1">创建PlanAhead工程</h2>
 <ol>
 <li>
-planahead create new project.
+创建工程目录
+<br />    $ mkdir multi_uart
+<br />    $ cd multi_uart/
 
 <li>
-chose xc7z020clg484-1.
+导入ise的环境变量
+<br />    $ source /opt/xilinx/14.6/settings64.sh 
 
 <li>
-select :
-<pre>
-    1.8V Bank1 IO voltage
-    qspi flash
-    eth0 use mio, and mdio
-    usb0
-    sd0, cd mio 47, wp mio46
-    gpio, mio50 mio51 in direction
-</pre>
+启动PlanAhead
+<br />    $ planAhead
 
 <li>
-DDR: MT41J128M16HA-15E
-<pre>
-    CLK0        55.77
-    CLK1        55.77
-    CLK2        41.43
-    CLK3        41.43
-    DQS0        51.00
-    DQS1        50.77
-    DQS2        41.59
-    DQS3        41.9
-    DQ[7:0]     50.63
-    DQ[15:8]    50.71
-    DQ[23:16]   40.89
-    DQ[31:24]   40.58
-</pre>
+创建名为multi_uart的工程，路径为/mnt/zedboard/ise/multi_uart
 
 <li>
-clock
-    sdio 50MHz
+芯片选择xc7z020clg484-1
 
+<li>
+工程建好后，添加IP（Add or Create Embedded Sources）
+
+<ul>
+<li>
+增加一个名为system的Sub-Design
+
+<li>
+确定后弹出窗口，选YES即可
+
+</ul>
+<li>
+打开I/O Peripherse :
+
+<ul>
+<li>
+设置Bank1 IO voltage为1.8V
+
+<li>
+开启qspi flash
+
+<li>
+开启eth0 use mio, and mdio
+
+<li>
+开启usb0
+
+<li>
+开启sd0, cd:mio 47, wp:mio46
+
+<li>
+开启uart1
+
+<li>
+开启gpio, mio50 mio51 in direction
+
+</ul>
+<li>
+打开DDR:
+
+<ul>
+<li>
+选择MT41J128M16HA-15E
+
+<li>
+开启Interal Vref
+
+<li>
+开启DRAM Training: Write leveling, Read gate, Read data eye
+
+<li>
+设置Pin Group Delay
+
+</ul>
+</ol>
+<table>
+<tr>
+<th>
+Pin Group
+</th>
+<th>
+Length
+</th>
+</tr>
+<tr>
+<td>
+CLK0
+</td>
+<td>
+55.77
+</td>
+</tr>
+<tr>
+<td>
+CLK1
+</td>
+<td>
+55.77
+</td>
+</tr>
+<tr>
+<td>
+CLK2
+</td>
+<td>
+41.43
+</td>
+</tr>
+<tr>
+<td>
+CLK3
+</td>
+<td>
+41.43
+</td>
+</tr>
+<tr>
+<td>
+DQS0
+</td>
+<td>
+51.00
+</td>
+</tr>
+<tr>
+<td>
+DQS1
+</td>
+<td>
+50.77
+</td>
+</tr>
+<tr>
+<td>
+DQS2
+</td>
+<td>
+41.59
+</td>
+</tr>
+<tr>
+<td>
+DQS3
+</td>
+<td>
+41.9
+</td>
+</tr>
+<tr>
+<td>
+DQ[7:0]
+</td>
+<td>
+50.63
+</td>
+</tr>
+<tr>
+<td>
+DQ[15:8]
+</td>
+<td>
+50.71
+</td>
+</tr>
+<tr>
+<td>
+DQ[23:16]
+</td>
+<td>
+40.89
+</td>
+</tr>
+<tr>
+<td>
+DQ[31:24]
+</td>
+<td>
+40.58
+</td>
+</tr>
+</table>
+      
+<ol>
+<li>
+打开Clock Generation
+
+<ul>
+<li>
+设置sdio 50MHz
+
+</ul>
 <li>
 create top hdl
 
@@ -99,22 +210,16 @@ add ucf file
 <li>
 generate bitstream
 
+<li>
+export sdk
+
+<li>
+add board support package
+
+<li>
+add fsbl
+
 </ol>
-
-
-<h2 id="toc_1.7">uboot</h2>
-<pre>
-"sdboot=echo Copying Linux from SD to RAM...;" \
-    "mmcinfo;" \
-    "fatload mmc 0 0x8000 zImage;" \
-    "fatload mmc 0 0x1000000 devicetree.dtb;" \
-    "fatload mmc 0 0x800000 ramdisk8M.image.gz;" \
-    "go 0x8000\0" \
-</pre>
-
-<p>
-env set sdboot "echo Copying Linux lihan from SD to RAM...; mmcinfo; fatload mmc 0 0x8000 zImage; fatload mmc 0 0x1000000 devicetree.dtb; fatload mmc 0 0x800000 ramdisk8M.image.gz; go 0x8000\0"
-</p>
 
 </body>
 </html>
