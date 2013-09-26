@@ -29,9 +29,9 @@ make
 <li>
 make distclean &amp;&amp; make zynq_zed_config &amp;&amp; make
 
-<li>
-
-
+</ul>
+ 
+<ul>
 <li>
 env set sdboot "echo Copying Linux lihan from SD to RAM...; mmcinfo; fatload mmc 0 0x8000 zImage; fatload mmc 0 0x1000000 devicetree.dtb; fatload mmc 0 0x800000 ramdisk32M.image.gz; go 0x8000"
 
@@ -114,27 +114,27 @@ cd /mnt/zedboard/boot/_rootfs
 <li>
 ln -s sbin/dropbear /mnt/zedboard/boot/_rootfs/usr/bin/scp
 
-<li>
-
-
+</ul>
+ 
+<ul>
 <li>
 mkdir etc etc/dropbear
 
 <li>
 cp dropbear_dss_host_key dropbear_rsa_host_key /mnt/zedboard/boot/_rootfs/etc/dropbear/
 
-<li>
-
-
+</ul>
+ 
+<ul>
 <li>
 cd dev-tools
 
 <li>
 cp -r lib/ usr/ /mnt/zedboard/boot/_rootfs/
 
-<li>
-
-
+</ul>
+ 
+<ul>
 <li>
 cd lib
 
@@ -145,9 +145,7 @@ ln -s libz.so.1.2.7 libz.so
 ln -s libz.so.1.2.7 libz.so.1
 
 </ul>
-<p>
--
-</p>
+
 <ul>
 <li>
 cd usr/lib
@@ -155,13 +153,8 @@ cd usr/lib
 <li>
 ln -s libcrypto.so.1.0.0 libcrypto.so
 
-<li>
-
-
 </ul>
-<p>
--
-</p>
+ 
 <ul>
 <li>
 cp /opt/xilinx/gcc_tools/arm-xilinx-linux-gnueabi/libc/lib/* lib
@@ -169,18 +162,18 @@ cp /opt/xilinx/gcc_tools/arm-xilinx-linux-gnueabi/libc/lib/* lib
 <li>
 cp /opt/xilinx/gcc_tools/arm-xilinx-linux-gnueabi/libc/usr/lib/* usr/lib
 
-<li>
-
-
+</ul>
+ 
+<ul>
 <li>
 arm-xilinx-linux-gnueabi-strip lib/*
 
 <li>
 arm-xilinx-linux-gnueabi-strip usr/lib/*
 
-<li>
-
-
+</ul>
+ 
+<ul>
 <li>
 cp /opt/xilinx/gcc_tools/arm-xilinx-linux-gnueabi/libc/sbin/* sbin
 
@@ -188,9 +181,7 @@ cp /opt/xilinx/gcc_tools/arm-xilinx-linux-gnueabi/libc/sbin/* sbin
 cp /opt/xilinx/gcc_tools/arm-xilinx-linux-gnueabi/libc/usr/bin/* usr/bin
 
 </ul>
-<p>
--
-</p>
+
 <ul>
 <li>
 mkdir dev etc/init.d mnt opt proc root sys tmp var var/log var/www

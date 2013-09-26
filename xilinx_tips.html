@@ -10,37 +10,71 @@
 <h1 id="toc_1" class="justcenter">xilinx tips</h1>
 
 <h2 id="toc_1.1">use xilinx under linux</h2>
-<p>
+<ul>
+<li>
 source settings64.csh
+
+<li>
 ise            - Project Navigator
+
+<li>
 xps            - EDK Platform Studio
+
+<li>
 planAhead      - PlanAhead
+
+<li>
 fpga_editor    - FPGA editor
+
+<li>
 coregen        - Core Generator
+
+<li>
 timingan       - Timing Analyzer
+
+<li>
 smartxplorer   - SmartXplorer
+
+<li>
 sysgen         - System Generator
+
+<li>
 analyzer       - Chipscope Analyzer
-</p>
+
+</ul>
 
 <h2 id="toc_1.2">planahead segmentation fault</h2>
-<p>
+<ul>
+<li>
 /opt/xilinx/14.5/ISE_DS/PlanAhead/bin/rdiArgs.sh: line 95: 21662 Segmentation fault      "\(RDI_PROG" "\)@"
+
+<li>
 mv /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so.bak
+
+<li>
 ln -s /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/libjvm.so /opt/xilinx/ise/PlanAhead/tps/lnx64/jre/lib/amd64/server/libjvm.so
-</p>
+
+</ul>
 
 <h2 id="toc_1.3">xps application failed</h2>
-<p>
+<ul>
+<li>
 error [common 17-49] interanal data exception: xps application failed!
+
+<li>
 cd /usr/bin/
+
+<li>
 sudo ln -s make gmake
-</p>
+
+</ul>
 
 <h2 id="toc_1.4">no arm tools</h2>
-<p>
+<ul>
+<li>
 install CodeSourcery to /opt/xilinx/ise/EDK/gnu/arm/lin
-</p>
+
+</ul>
 
 </body>
 </html>
